@@ -1,19 +1,23 @@
 # Research Opportunity Portal
 
-A full-stack web application that allows faculty members to post, view, update, and manage university research opportunities in one centralized platform. Built with Node.js, Express, and MySQL for the backend, with a REST API architecture.
+A full-stack web application that allows faculty members to post, view, update, and manage university research opportunities in one centralized platform. Built with Node.js, Express, and MySQL for the backend, with a REST API architecture and a vanilla HTML/CSS/JS frontend.
 
 ## GitHub Repository
 https://github.com/muhammad-abbas-10/research-opportunity-portal
 
 ## Tech Stack
 - **Backend:** Node.js, Express.js
-- **Database:** MySQL
-- **Frontend:** HTML, CSS, JavaScript
+- **Database:** MySQL (MariaDB via XAMPP)
+- **Frontend:** HTML, CSS, JavaScript (vanilla, no framework)
+- **Dev tooling:** nodemon, http-server, concurrently
 - **Testing:** Postman
 
 ## Project Structure
 ```
 research-opportunity-portal/
+│
+├── package.json             # Root scripts to run backend + frontend together
+├── package-lock.json
 │
 ├── backend/
 │   ├── controllers/
@@ -23,15 +27,21 @@ research-opportunity-portal/
 │   ├── server.js
 │   ├── db.js
 │   ├── package.json
-│   ├── .env               (not committed)
+│   ├── .env                 # not committed
 │   └── .gitignore
 │
 ├── database/
 │   └── schema.sql
 │
 ├── frontend/
-│   └── (HTML/CSS/JS files)
+│   ├── index.html           # Homepage: list of opportunities + create form
+│   ├── details.html         # View, edit, delete one opportunity; toggle status
+│   ├── style.css
+│   └── script.js
 │
+├── research-opportunity-portal.postman_collection.json
+│
+├── .gitignore
 └── README.md
 ```
 
@@ -39,45 +49,65 @@ research-opportunity-portal/
 
 ### Prerequisites
 - Node.js installed
-- MySQL installed and running
+- MySQL/MariaDB installed and running (e.g. via XAMPP)
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/research-opportunity-portal.git
+git clone https://github.com/muhammad-abbas-10/research-opportunity-portal.git
 cd research-opportunity-portal
 ```
 
 ### 2. Set up the database
-Open MySQL and run the schema file:
+Start MySQL (via XAMPP Control Panel or your MySQL service), then run the schema:
 ```bash
 mysql -u root -p < database/schema.sql
 ```
-This creates the `research_portal` database and the `opportunities` table.
+Or paste the contents of `database/schema.sql` into MySQL Workbench / the MariaDB command line. This creates the `research_portal` database and the `opportunities` table.
 
-### 3. Install backend dependencies
-```bash
-cd backend
-npm install
-```
-
-### 4. Configure environment variables
-Create a `.env` file inside the `backend/` folder with the following:
+### 3. Configure environment variables
+Create a `.env` file inside the `backend/` folder:
 ```
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=
 DB_NAME=research_portal
 PORT=5000
 ```
+(Leave `DB_PASSWORD` blank if using XAMPP's default root user.)
 
-### 5. Run the server
+### 4. Install dependencies
+
+Install backend dependencies:
 ```bash
-node server.js
+cd backend
+npm install
+cd ..
 ```
-The server will start at `http://localhost:5000`.
 
-### 6. Open the frontend
-Open `frontend/index.html` in your browser, or serve it with a live server extension.
+Install root dependencies (used to run both servers together):
+```bash
+npm install
+```
+
+### 5. Run the whole app with one command
+From the project root:
+```bash
+npm run dev
+```
+This starts both servers at once:
+- Backend API → `http://localhost:5000`
+- Frontend → `http://127.0.0.1:5500`
+
+Open your browser to:
+```
+http://127.0.0.1:5500
+```
+
+To run them separately instead:
+```bash
+npm run backend    # starts only the Express API
+npm run frontend   # starts only the static frontend server
+```
 
 ## API Endpoints
 
@@ -111,15 +141,29 @@ Open `frontend/index.html` in your browser, or serve it with a live server exten
 - `404 Not Found` – opportunity does not exist
 - `500 Internal Server Error` – unexpected server error
 
+## Frontend Features
+- View all research opportunities in a list
+- View full details of a selected opportunity
+- Create a new opportunity through a validated form
+- Edit an existing opportunity's details
+- Toggle status between Open and Closed
+- Delete an opportunity (with confirmation prompt)
+- Success and error messages shown for all actions
+- Client-side validation for required fields, in addition to backend validation
+
 ## Postman Collection
-The exported Postman collection is included in this repository as `research-opportunity-portal.postman_collection.json`.
+The exported Postman collection is included in this repository as:
+```
+research-opportunity-portal.postman_collection.json
+```
+It includes: creating multiple opportunities, retrieving all, retrieving one by ID, updating, changing status, deleting, retrieving a deleted opportunity (404 demonstration), and a request with missing fields (400 demonstration).
 
 ## Author
-Muhammad Abbas – 24P-0545 – BAI-5A (CS DEPARTMENT)
+Muhammad Abbas – P24-0545 – BAI-5A
 
 ## Project Status
 - [x] Phase 1: Project setup, database schema, basic server
 - [x] Phase 2: Backend CRUD API routes
-- [ ] Phase 3: Frontend interface
+- [x] Phase 3: Frontend interface (list, details, create, edit, delete, status toggle)
 - [ ] Postman testing and collection export
 - [ ] Demo video

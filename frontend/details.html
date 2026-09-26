@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Opportunity Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Opportunity Details</h1>
+    <a href="index.html" class="back-link">&larr; Back to all opportunities</a>
+</header>
+
+<main>
+
+    <section id="message-box" class="message hidden"></section>
+
+    <section class="panel">
+        <div id="details-view">
+            <p>Loading...</p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header-row">
+            <h2>Edit This Opportunity</h2>
+            <button id="toggle-status-btn" type="button">Toggle Status</button>
+        </div>
+
+        <form id="edit-form">
+            <input type="hidden" id="opp-id">
+
+            <div class="form-row">
+                <label for="title">Research Title *</label>
+                <input type="text" id="title" required>
+            </div>
+
+            <div class="form-row">
+                <label for="description">Description *</label>
+                <textarea id="description" rows="3" required></textarea>
+            </div>
+
+            <div class="form-row two-col">
+                <div>
+                    <label for="research_area">Research Area *</label>
+                    <input type="text" id="research_area" required>
+                </div>
+                <div>
+                    <label for="faculty_name">Faculty Name *</label>
+                    <input type="text" id="faculty_name" required>
+                </div>
+            </div>
+
+            <div class="form-row two-col">
+                <div>
+                    <label for="department">Department *</label>
+                    <input type="text" id="department" required>
+                </div>
+                <div>
+                    <label for="required_skills">Required Skills *</label>
+                    <input type="text" id="required_skills" required>
+                </div>
+            </div>
+
+            <div class="form-row two-col">
+                <div>
+                    <label for="positions_available">Available Positions *</label>
+                    <input type="number" id="positions_available" min="1" required>
+                </div>
+                <div>
+                    <label for="application_deadline">Application Deadline *</label>
+                    <input type="date" id="application_deadline" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="status">Status *</label>
+                <select id="status" required>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
+            </div>
+
+            <div class="button-row">
+                <button type="submit">Save Changes</button>
+                <button type="button" id="delete-btn" class="danger">Delete Opportunity</button>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

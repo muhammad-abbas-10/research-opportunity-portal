@@ -1,0 +1,28 @@
+{
+  "name": "p24_0545_muhammad-abbas_bai-5a",
+  "version": "1.0.0",
+  "description": "A full-stack web application that allows faculty members to post, view, update, and manage university research opportunities in one centralized platform. Built with Node.js, Express, and MySQL for the backend, with a REST API architecture.",
+  "main": "index.js",
+  "scripts": {
+    "backend": "nodemon backend/server.js",
+    "frontend": "http-server frontend -p 5500",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammad-abbas-10/research-opportunity-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/muhammad-abbas-10/research-opportunity-portal/issues"
+  },
+  "homepage": "https://github.com/muhammad-abbas-10/research-opportunity-portal#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.14"
+  }
+}
