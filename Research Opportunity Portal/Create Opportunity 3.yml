@@ -1,0 +1,30 @@
+info:
+  name: Create Opportunity 3
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:5000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+          "title": "Natural Language Processing for Urdu Text",
+          "description": "Building sentiment analysis and translation tools tailored specifically for the Urdu language.",
+          "research_area": "Computational Linguistics",
+          "faculty_name": "Dr. Bilal Hussain",
+          "department": "Computer Science",
+          "required_skills": "Python, NLP, PyTorch",
+          "positions_available": 1,
+          "application_deadline": "2026-10-30",
+          "status": "Open"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

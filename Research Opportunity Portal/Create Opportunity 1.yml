@@ -1,0 +1,30 @@
+info:
+  name: Create Opportunity 1
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:5000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+          "title": "AI in Healthcare Diagnostics",
+          "description": "Developing machine learning models to assist radiologists in detecting early-stage tumors from MRI scans.",
+          "research_area": "Artificial Intelligence",
+          "faculty_name": "Dr. Ahmed Khan",
+          "department": "Computer Science",
+          "required_skills": "Python, TensorFlow, Image Processing",
+          "positions_available": 2,
+          "application_deadline": "2026-11-15",
+          "status": "Open"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

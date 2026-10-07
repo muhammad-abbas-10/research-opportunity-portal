@@ -1,0 +1,30 @@
+info:
+  name: Create Opportunity 2
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:5000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+          "title": "Renewable Energy Storage Systems",
+          "description": "Investigating next-generation battery materials to improve efficiency of solar energy storage.",
+          "research_area": "Electrical Engineering",
+          "faculty_name": "Dr. Sara Malik",
+          "department": "Electrical Engineering",
+          "required_skills": "MATLAB, Circuit Design, Materials Science",
+          "positions_available": 3,
+          "application_deadline": "2026-12-01",
+          "status": "Open"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

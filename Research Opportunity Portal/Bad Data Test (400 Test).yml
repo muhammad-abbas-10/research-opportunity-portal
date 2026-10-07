@@ -1,0 +1,23 @@
+info:
+  name: Bad Data Test (400 Test)
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: http://localhost:5000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+          "title": "Incomplete Research Post",
+          "research_area": "Data Science"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
